@@ -96,10 +96,10 @@ data_sources:
     enabled: true
   alpha_vantage:
     enabled: false
-    api_key: "your_api_key_here"
+    # api_key: "your_api_key_here"
   polygon:
     enabled: false
-    api_key: "${L81ycYYlYGZLgsRwpn_wVzMukBj5Ct2C}"
+    # api_key: "${your_api_key_here}"
 
 # Monitoring Configuration
 monitoring:

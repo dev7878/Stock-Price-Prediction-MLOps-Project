@@ -53,7 +53,7 @@ notebooks/         # Jupyter notebooks for analysis
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/stock-prediction-mlops.git
+git clone https://github.com/yourusername/stock-prediction-mlops.git](https://github.com/dev7878/Stock-Price-Prediction-MLOps-Project.git
 cd stock-prediction-mlops
 ```
 
@@ -156,9 +156,7 @@ pre-commit install
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🤝 Contributing
 
-Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details on how to submit pull requests, report issues, and contribute to the project.
 
 ## 🙏 Acknowledgments
 
@@ -169,18 +167,6 @@ Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTIN
 
 ## 📧 Contact
 
-- Your Name - [your.email@example.com](mailto:your.email@example.com)
-- Project Link: [https://github.com/yourusername/stock-prediction-mlops](https://github.com/yourusername/stock-prediction-mlops)
+- Your Name - [devpatel5578@gmail.com](mailto:devpatel5578@gmail.com)
+- Project Link: [https://github.com/dev7878/Stock-Price-Prediction-MLOps-Project](https://github.com/dev7878/Stock-Price-Prediction-MLOps-Project)
 
-## 📌 Citation
-
-If you use this project in your research or work, please cite it as:
-
-```bibtex
-@software{stock_prediction_mlops,
-  author = {Your Name},
-  title = {Stock Price Prediction MLOps Project},
-  year = {2024},
-  url = {https://github.com/yourusername/stock-prediction-mlops}
-}
-```

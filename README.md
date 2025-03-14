@@ -54,7 +54,6 @@ notebooks/         # Jupyter notebooks for analysis
 
 ```bash
 git clone https://github.com/dev7878/Stock-Price-Prediction-MLOps-Project.git
-cd stock-prediction-mlops
 ```
 
 2. **Set up the environment**

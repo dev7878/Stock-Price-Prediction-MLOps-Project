@@ -53,7 +53,7 @@ notebooks/         # Jupyter notebooks for analysis
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/stock-prediction-mlops.git](https://github.com/dev7878/Stock-Price-Prediction-MLOps-Project.git
+git clone https://github.com/dev7878/Stock-Price-Prediction-MLOps-Project.git
 cd stock-prediction-mlops
 ```
 

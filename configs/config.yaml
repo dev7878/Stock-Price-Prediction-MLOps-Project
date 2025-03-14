@@ -1,0 +1,118 @@
+# Data Configuration
+data:
+  raw_data_path: "data/raw"
+  processed_data_path: "data/processed"
+  external_data_path: "data/external"
+
+  # Stock data parameters
+  symbols: ["AAPL", "GOOGL", "MSFT", "AMZN", "META"] # Default stocks to track
+  timeframe: "1d" # Data frequency (1d, 1h, 15min)
+  history_length: 1000 # Number of historical data points to fetch
+  prediction_horizon: 1 # Days to predict ahead
+
+# Feature Engineering
+features:
+  # Price features
+  price_features:
+    - "close"
+    - "open"
+    - "high"
+    - "low"
+    - "volume"
+    - "vwap"
+
+  # Technical indicators
+  technical_indicators:
+    sma:
+      periods: [5, 10, 20, 50, 200]
+    ema:
+      periods: [5, 10, 20, 50, 200]
+    rsi:
+      period: 14
+    macd:
+      fast_period: 12
+      slow_period: 26
+      signal_period: 9
+    bollinger_bands:
+      period: 20
+      std_dev: 2
+
+  # Market indicators
+  market_indicators:
+    - "sp500_index"
+    - "nasdaq_index"
+    - "sector_performance"
+    - "vix_index"
+
+  # Alternative data
+  sentiment_analysis:
+    enabled: true
+    sources: ["twitter", "news", "reddit"]
+    lookback_days: 3
+
+# Model Configuration
+model:
+  model_path: "models"
+  lstm:
+    epochs: 50
+    batch_size: 32
+    units: [50, 50]
+    dropout: 0.2
+  xgboost:
+    n_estimators: 100
+    max_depth: 6
+    learning_rate: 0.1
+  lightgbm:
+    n_estimators: 100
+    max_depth: 6
+    learning_rate: 0.1
+
+# Evaluation metrics
+metrics:
+  - "mape" # Mean Absolute Percentage Error
+  - "rmse" # Root Mean Square Error
+  - "directional_accuracy"
+  - "sharpe_ratio"
+  - "sortino_ratio"
+
+# MLflow Configuration
+mlflow:
+  tracking_uri: "http://127.0.0.1:5000"
+  experiment_name: "stock_price_prediction"
+  model_name: "stock_predictor"
+
+# API Configuration
+api:
+  host: "127.0.0.1"
+  port: 8000
+  debug: false
+  workers: 4
+  rate_limit: 100 # requests per minute
+  cache_timeout: 300 # seconds
+
+# Data Sources Configuration
+data_sources:
+  yahoo_finance:
+    enabled: true
+  alpha_vantage:
+    enabled: false
+    api_key: "your_api_key_here"
+  polygon:
+    enabled: false
+    api_key: "${L81ycYYlYGZLgsRwpn_wVzMukBj5Ct2C}"
+
+# Monitoring Configuration
+monitoring:
+  prediction_accuracy_threshold: 0.7
+  drift_detection_window: 7 # days
+  retraining_trigger_threshold: 0.1 # performance degradation threshold
+  metrics_update_interval: 1 # hours
+  alert_channels: ["email", "slack"]
+
+# Backtesting Configuration
+backtesting:
+  initial_capital: 100000
+  position_size: 0.1 # fraction of capital per trade
+  max_positions: 5
+  stop_loss: 0.02 # 2% stop loss
+  take_profit: 0.05 # 5% take profit

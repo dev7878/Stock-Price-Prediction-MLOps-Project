@@ -74,4 +74,8 @@ Thumbs.db
 
 # DVC
 .dvc/
-/data 
+/data
+
+# Personal Notes
+PROJECT_NOTES.md
+INTERVIEW_PREP.md 

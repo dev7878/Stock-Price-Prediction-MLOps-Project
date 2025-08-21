@@ -1,0 +1,33 @@
+# MLflow Server Dockerfile
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        curl \
+        sqlite3 \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
+
+# Install MLflow
+RUN pip install --no-cache-dir mlflow
+
+# Create necessary directories
+RUN mkdir -p mlruns mlartifacts
+
+# Copy startup script
+COPY start-mlflow.sh /app/start-mlflow.sh
+RUN chmod +x /app/start-mlflow.sh
+
+# Expose MLflow port
+EXPOSE 5000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=15s --start-period=60s --retries=5 \
+    CMD curl -f http://localhost:5000/health || exit 1
+
+# Start MLflow server using startup script
+CMD ["/app/start-mlflow.sh"]

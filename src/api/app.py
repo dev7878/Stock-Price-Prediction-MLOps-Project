@@ -5,10 +5,11 @@ from typing import Dict, List
 import numpy as np
 import pandas as pd
 import yaml
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends, Header
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from typing import Optional
 import tensorflow as tf
 import xgboost as xgb
 import lightgbm as lgb
@@ -17,11 +18,32 @@ import mlflow
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
+import os
+
 # Load configuration
 def load_config():
     config_path = Path("configs/config.yaml")
     with open(config_path, "r") as f:
-        return yaml.safe_load(f)
+        config = yaml.safe_load(f)
+    
+    # Override config values with environment variables for cloud deployment
+    if os.getenv("ALPHA_VANTAGE_API_KEY"):
+        config["data_sources"]["alpha_vantage"]["api_key"] = os.getenv("ALPHA_VANTAGE_API_KEY")
+    
+    if os.getenv("POLYGON_API_KEY"):
+        config["data_sources"]["polygon"]["api_key"] = os.getenv("POLYGON_API_KEY")
+    
+    # Override other config values
+    if os.getenv("MLFLOW_TRACKING_URI"):
+        config["mlflow"]["tracking_uri"] = os.getenv("MLFLOW_TRACKING_URI")
+    
+    if os.getenv("API_HOST"):
+        config["api"]["host"] = os.getenv("API_HOST")
+    
+    if os.getenv("API_PORT"):
+        config["api"]["port"] = int(os.getenv("API_PORT"))
+    
+    return config
 
 config = load_config()
 
@@ -214,6 +236,24 @@ class StockPredictor:
         
         return fig
 
+# API Key Authentication (Optional)
+def verify_api_key(x_api_key: Optional[str] = Header(None)):
+    """Verify API key if enabled."""
+    api_key_enabled = os.getenv("API_KEY_ENABLED", "false").lower() == "true"
+    if not api_key_enabled:
+        return None
+    
+    api_key_value = os.getenv("API_KEY_VALUE")
+    if not api_key_value:
+        return None
+    
+    if x_api_key != api_key_value:
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid API key"
+        )
+    return x_api_key
+
 # Initialize predictor
 predictor = StockPredictor(config)
 
@@ -224,6 +264,20 @@ async def root():
         "message": "Stock Price Prediction API",
         "version": "1.0.0",
         "docs_url": "/docs"
+    }
+
+@app.get("/health")
+async def health_check():
+    """Health check endpoint."""
+    return {"status": "ok", "timestamp": datetime.now().isoformat()}
+
+@app.get("/version")
+async def get_version():
+    """Get API version information."""
+    return {
+        "version": "1.0.0",
+        "status": "healthy",
+        "timestamp": datetime.now().isoformat()
     }
 
 @app.get("/symbols")

@@ -16,17 +16,17 @@ AAPL:
       - -1
       - 0
     - !!binary |
-      muBdxWgnN0A=
-    mae: 177.7487105834484
+      +zEcWHNoOkA=
+    mae: 169.83694334313273
     mape: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      dpcn7MqJWEA=
-    r2: -31.393221714555963
+      0t+vqDD6VkA=
+    r2: -30.317886259365515
     rmse: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      o/vXhrq1ZkA=
+      2TbUAOt7ZkA=
     sharpe_ratio: !!python/object/apply:numpy.core.multiarray.scalar
     - &id002 !!python/object/apply:numpy.dtype
       args:
@@ -43,274 +43,274 @@ AAPL:
       - -1
       - 0
     - !!binary |
-      Pqj+Ow==
+      1oMuvQ==
   LightGBM:
     directional_accuracy: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      OI+fMl7mQ0A=
-    mae: 29.914081907546098
+      40S3vO2mRUA=
+    mae: 29.83991063047868
     mape: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      3jc5it24MUA=
-    r2: -0.1546054394318268
+      SlHxZPihMUA=
+    r2: -0.13294770229577568
     rmse: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      bslfZWcmQUA=
+      ny/fjxUbQUA=
     sharpe_ratio: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      QS173SyOX78=
+      72xaOgjVXD8=
   XGBoost:
     directional_accuracy: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      Suh1cD+GQ0A=
-    mae: 27.818061666488646
+      I+wBxqq1QUA=
+    mae: 28.125907430648805
     mape: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      9kfjLI4vMEA=
-    r2: -0.05121485619977961
+      rqfV2PZaMEA=
+    r2: -0.047332101489033995
     rmse: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      vwkB8ThdQEA=
+      gUOHfl9yQEA=
     sharpe_ratio: !!python/object/apply:numpy.core.multiarray.scalar
     - *id002
     - !!binary |
-      Oxm8ug==
+      eAhQOw==
 AMZN:
   LSTM:
     directional_accuracy: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      +xDVucQmNUA=
-    mae: 45.32265604794026
+      lG0WBnNHN0A=
+    mae: 52.69136370271444
     mape: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      /shI/EVYQkA=
-    r2: -1.250320122649514
+      xJyL1Z+5REA=
+    r2: -1.7997568834739694
     rmse: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      jYfzqJk2TUA=
+      ps/DugRtUEA=
     sharpe_ratio: !!python/object/apply:numpy.core.multiarray.scalar
     - *id002
     - !!binary |
-      7wFrPA==
+      IzItvg==
   LightGBM:
     directional_accuracy: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      0cqZ4F3FQEA=
-    mae: 39.583967310725875
+      3fK2m6YIO0A=
+    mae: 40.553118931273964
     mape: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      TreSpmZCQEA=
-    r2: -0.4568560067972316
+      qoPEBOu+QEA=
+    r2: -0.5131893165454369
     rmse: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      8WPb4l2BR0A=
+      bnInzskmSEA=
     sharpe_ratio: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      6bi9f5EVcD8=
+      Qa9haeGQXj8=
   XGBoost:
     directional_accuracy: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      EZMriMkVQkA=
-    mae: 38.426624822616574
+      0cqZ4F3FQEA=
+    mae: 43.49781758308411
     mape: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      tynzJtQhP0A=
-    r2: -0.3496344095249495
+      Hapj8jsfQkA=
+    r2: -0.7592332272983338
     rmse: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      1mWC0LOfRkA=
+      Kl7bKoYKSkA=
     sharpe_ratio: !!python/object/apply:numpy.core.multiarray.scalar
     - *id002
     - !!binary |
-      uIt7uw==
+      TRq3Og==
 GOOGL:
   LSTM:
     directional_accuracy: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      Mj2fERdIOUA=
-    mae: 102.19814383646474
+      oDJe5q/FMUA=
+    mae: 71.78319489598275
     mape: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      vvnkuqQzUkA=
-    r2: -12.877398909868296
+      89DituF/SUA=
+    r2: -6.0103615485831146
     rmse: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      RydCwzeDW0A=
+      krIL4eapU0A=
     sharpe_ratio: !!python/object/apply:numpy.core.multiarray.scalar
     - *id002
     - !!binary |
-      T+jZPQ==
+      M3UtvQ==
   LightGBM:
     directional_accuracy: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      0xRhDzBWQ0A=
-    mae: 26.84909173402577
+      b5oi7AHGQkA=
+    mae: 29.25971769368365
     mape: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      9UhwoJYlNkA=
-    r2: -0.12105115317057558
+      TX4BlnDCOEA=
+    r2: -0.28715710429169605
     rmse: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      ThNeN15HP0A=
+      G6ZObwDaQEA=
     sharpe_ratio: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      QVroKauiZj8=
+      FcfY6+HOWz8=
   XGBoost:
     directional_accuracy: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      Dmqr96XGREA=
-    mae: 25.32762619972229
+      kSNP16C2REA=
+    mae: 25.535967350006104
     mape: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      7jkQic9lNEA=
-    r2: -0.02920908637435149
+      3bc6qcBrNEA=
+    r2: -0.03312255539350306
     rmse: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      Rovpvlv4PUA=
+      wgaiytYxPkA=
     sharpe_ratio: !!python/object/apply:numpy.core.multiarray.scalar
     - *id002
     - !!binary |
-      iBmvOw==
+      CfD+Og==
 META:
   LSTM:
     directional_accuracy: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      9Z2N+s5GNUA=
-    mae: 257.1484569329023
+      UVu9LzVmM0A=
+    mae: 225.56614896953107
     mape: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      wU/7v/W9TkA=
-    r2: -2.922331256054954
+      JuLduU0KTEA=
+    r2: -1.8936382600493058
     rmse: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      08IWi2PrdEA=
+      MtTh/o4yckA=
     sharpe_ratio: !!python/object/apply:numpy.core.multiarray.scalar
     - *id002
     - !!binary |
-      ib0oPQ==
+      MjJDvQ==
   LightGBM:
     directional_accuracy: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      Y/YhqnOJPUA=
-    mae: 157.47786030586107
+      uUAKIOTIO0A=
+    mae: 172.12512691106696
     mape: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      mLt8jMI4U0A=
-    r2: -0.1281523040294994
+      tNaapAmvVUA=
+    r2: -0.3700968281070538
     rmse: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      wSlK/D1wZkA=
+      NHxkHCMLaUA=
     sharpe_ratio: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      S3zjekMcgj8=
+      LuJWg43ojz8=
   XGBoost:
     directional_accuracy: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      uP5744ZFQUA=
-    mae: 186.57384238243102
+      R56uQW31QEA=
+    mae: 198.02783272743224
     mape: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      KnywuMF6V0A=
-    r2: -0.6461482904459874
+      P7yLKfdVWUA=
+    r2: -0.8584543124887338
     rmse: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      65srn8gaa0A=
+      R1w0mdAqbUA=
     sharpe_ratio: !!python/object/apply:numpy.core.multiarray.scalar
     - *id002
     - !!binary |
-      HR6fOw==
+      fmiHOw==
 MSFT:
   LSTM:
     directional_accuracy: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      6thFGpLIOkA=
-    mae: 131.67426588907838
+      rDk0A0rHNkA=
+    mae: 150.96181965708732
     mape: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      yBnXQAWuRUA=
-    r2: -4.1707096210115555
+      De6WsqjcSEA=
+    r2: -5.778906211595822
     rmse: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      M7Ha1sl9ZEA=
+      frd6SYODZ0A=
     sharpe_ratio: !!python/object/apply:numpy.core.multiarray.scalar
     - *id002
     - !!binary |
-      ryAgPQ==
+      hGVuvQ==
   LightGBM:
     directional_accuracy: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      Suh1cD+GQ0A=
-    mae: 75.0695276927469
+      kSNP16C2REA=
+    mae: 68.36474273535072
     mape: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      SkhwY0kuO0A=
-    r2: -0.6731098821717258
+      jbVQHmvHOEA=
+    r2: -0.4220881601798654
     rmse: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      zXWQ3vxPV0A=
+      7BTjFhqKVUA=
     sharpe_ratio: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      c7U80gg7dD8=
+      dJNKdD3nfT8=
   XGBoost:
     directional_accuracy: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      bHGiW952RUA=
-    mae: 77.07577583312988
+      R56uQW31QEA=
+    mae: 79.43254543304444
     mape: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      smSFp0bhO0A=
-    r2: -0.7535398077235145
+      Zw3XiqzvPEA=
+    r2: -0.9216668521953668
     rmse: !!python/object/apply:numpy.core.multiarray.scalar
     - *id001
     - !!binary |
-      Tk/KPcDdV0A=
+      WIDs1+MJWUA=
     sharpe_ratio: !!python/object/apply:numpy.core.multiarray.scalar
     - *id002
     - !!binary |
-      rzG4Ow==
+      3ePYOg==

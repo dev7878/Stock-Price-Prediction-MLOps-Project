@@ -1,0 +1,88 @@
+version: "3.8"
+
+services:
+  mlflow:
+    build:
+      context: .
+      dockerfile: Dockerfile.mlflow
+    container_name: mlflow-server
+    ports:
+      - "5000:5000"
+    volumes:
+      - mlflow-data:/app/mlruns
+      - mlflow-artifacts:/app/mlartifacts
+    environment:
+      - MLFLOW_TRACKING_URI=http://localhost:5000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 60s
+    networks:
+      - mlops-network
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: stock-prediction-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./mlruns:/app/mlruns
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+    depends_on:
+      mlflow:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - mlops-network
+
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+      # Alternative: use pre-built TensorFlow image if needed
+      # dockerfile: Dockerfile.ui.tensorflow
+    container_name: stock-prediction-ui
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+    environment:
+      - API_URL=http://api:8000
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - mlops-network
+
+networks:
+  mlops-network:
+    driver: bridge
+
+volumes:
+  mlflow-data:
+    driver: local
+  mlflow-artifacts:
+    driver: local

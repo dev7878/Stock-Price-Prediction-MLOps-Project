@@ -41,7 +41,11 @@ def load_config():
         config["api"]["host"] = os.getenv("API_HOST")
     
     if os.getenv("API_PORT"):
-        config["api"]["port"] = int(os.getenv("API_PORT"))
+        try:
+            config["api"]["port"] = int(os.getenv("API_PORT"))
+        except (ValueError, TypeError):
+            # If API_PORT is not a valid integer, use default from config
+            pass
     
     return config
 

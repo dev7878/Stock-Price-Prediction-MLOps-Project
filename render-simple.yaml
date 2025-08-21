@@ -5,24 +5,18 @@ services:
     env: python
     plan: free
     buildCommand: |
-      chmod +x build.sh
-      ./build.sh
+      pip install --upgrade pip setuptools wheel
+      pip install numpy pandas scikit-learn tensorflow xgboost lightgbm
+      pip install fastapi uvicorn gunicorn pydantic
+      pip install requests pyyaml plotly mlflow
     startCommand: gunicorn src.api.app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
-      - key: MLFLOW_TRACKING_URI
-        value: https://stock-prediction-mlflow.onrender.com
       - key: API_HOST
         value: 0.0.0.0
       - key: API_PORT
         value: $PORT
-      - key: ALPHA_VANTAGE_API_KEY
-        sync: false
-      - key: POLYGON_API_KEY
-        sync: false
-      - key: API_KEY_ENABLED
-        value: false
     healthCheckPath: /health
     autoDeploy: true
     branch: main
@@ -33,8 +27,8 @@ services:
     env: python
     plan: free
     buildCommand: |
-      pip install --upgrade pip
-      pip install -r requirements-ui.txt
+      pip install --upgrade pip setuptools wheel
+      pip install streamlit plotly pandas numpy requests pyyaml
     startCommand: streamlit run src/frontend/app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true
     envVars:
       - key: PYTHON_VERSION
@@ -47,26 +41,6 @@ services:
         value: 0.0.0.0
       - key: STREAMLIT_SERVER_HEADLESS
         value: true
-      - key: STREAMLIT_BROWSER_GATHER_USAGE_STATS
-        value: false
     healthCheckPath: /_stcore/health
-    autoDeploy: true
-    branch: main
-
-  # MLflow Tracking Service (Optional - for model tracking)
-  - type: web
-    name: stock-prediction-mlflow
-    env: python
-    plan: free
-    buildCommand: |
-      pip install --upgrade pip
-      pip install mlflow
-    startCommand: mlflow server --host 0.0.0.0 --port $PORT --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlartifacts
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.11.0
-      - key: MLFLOW_TRACKING_URI
-        value: https://stock-prediction-mlflow.onrender.com
-    healthCheckPath: /health
     autoDeploy: true
     branch: main

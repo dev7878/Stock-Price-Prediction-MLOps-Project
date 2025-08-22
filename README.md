@@ -1,6 +1,7 @@
 # Stock Price Prediction MLOps Project
 
 <!-- Test deployment trigger - Cloud Build integration active -->
+<!-- App Engine now enabled - deployment should work! -->
 
 ## 🚀 Quick Start
 

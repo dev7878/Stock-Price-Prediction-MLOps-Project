@@ -13,8 +13,8 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
-      - key: MLFLOW_TRACKING_URI
-        value: https://stock-prediction-mlflow.onrender.com
+      # - key: MLFLOW_TRACKING_URI
+      #   value: https://stock-prediction-mlflow.onrender.com
       - key: API_HOST
         value: 0.0.0.0
       - key: ALPHA_VANTAGE_API_KEY
@@ -53,20 +53,20 @@ services:
     autoDeploy: true
     branch: main
 
-  # MLflow Tracking Service (Optional - for model tracking)
-  - type: web
-    name: stock-prediction-mlflow
-    env: python
-    plan: free
-    buildCommand: |
-      pip install --upgrade pip
-      pip install mlflow
-    startCommand: mlflow server --host 0.0.0.0 --port $PORT --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlartifacts
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.11.0
-      - key: MLFLOW_TRACKING_URI
-        value: https://stock-prediction-mlflow.onrender.com
-    healthCheckPath: /health
-    autoDeploy: true
-    branch: main
+  # MLflow Tracking Service (Commented out - Memory issues on free tier)
+  # - type: web
+  #   name: stock-prediction-mlflow
+  #   env: python
+  #   plan: free
+  #   buildCommand: |
+  #     pip install --upgrade pip
+  #     pip install mlflow==2.8.0
+  #   startCommand: mlflow server --host 0.0.0.0 --port $PORT --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlartifacts --workers 1 --max-artifact-root-size 100MB
+  #   envVars:
+  #     - key: PYTHON_VERSION
+  #       value: 3.11.0
+  #     - key: MLFLOW_TRACKING_URI
+  #       value: https://stock-prediction-mlflow.onrender.com
+  #   healthCheckPath: /health
+  #   autoDeploy: true
+  #   branch: main

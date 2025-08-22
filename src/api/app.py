@@ -264,16 +264,19 @@ def verify_api_key(x_api_key: Optional[str] = Header(None)):
     return x_api_key
 
 # Initialize predictor (with error handling)
+print("Starting predictor initialization...")
 try:
     print("Initializing StockPredictor...")
     predictor = StockPredictor(config)
     print("StockPredictor initialized successfully")
 except Exception as e:
     print(f"Warning: Failed to initialize predictor: {e}")
+    print("Continuing without prediction capabilities...")
     predictor = None
 
 print("FastAPI app initialization complete")
 print(f"Available endpoints: /, /health, /version, /symbols, /predict/{{symbol}}, /plot/{{symbol}}, /metrics/{{symbol}}")
+print("API server ready to start...")
 
 @app.get("/")
 async def root():

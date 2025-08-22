@@ -1,0 +1,21 @@
+# Test GCP Cloud Run Dockerfile - Simple API
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install only essential dependencies
+RUN pip install --no-cache-dir fastapi uvicorn
+
+# Copy the simple test API
+COPY src/api/app_simple.py ./main.py
+
+# Set environment variables for GCP
+ENV PORT=8080
+ENV HOST=0.0.0.0
+
+# Expose port
+EXPOSE 8080
+
+# Run the simple test API
+CMD uvicorn main:app --host 0.0.0.0 --port $PORT

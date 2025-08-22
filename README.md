@@ -4,19 +4,19 @@ A comprehensive MLOps project demonstrating end-to-end machine learning operatio
 
 ## 🚀 **Quick Start - Live Demo**
 
-### **Option 1: Streamlit Cloud (Recommended)**
-🎯 **Get a live demo URL in 5 minutes!**
+### **Option 1: Google Cloud Platform (Recommended)**
+🎯 **Get a professional live demo URL in 15 minutes!**
 
-1. **Push code to GitHub** (see deployment guide below)
-2. **Deploy to Streamlit Cloud** - [share.streamlit.io](https://share.streamlit.io)
-3. **Get live URL** for your resume and portfolio
+1. **Set up GCP account** (free, no credit card required)
+2. **Deploy to Google Cloud** using our automated script
+3. **Get enterprise-grade URLs** for your resume and portfolio
 
-**Why Streamlit Cloud?**
-- ✅ **100% Free** - No credit card required
-- ✅ **Auto-deploy** from GitHub
-- ✅ **Professional hosting** with HTTPS
-- ✅ **Mobile responsive** design
-- ✅ **No server maintenance**
+**Why Google Cloud Platform?**
+- ✅ **Professional Platform** - Industry-standard cloud services
+- ✅ **Generous Free Tier** - 2M requests/month on Cloud Run
+- ✅ **Auto-scaling** - Scales to zero when not in use
+- ✅ **Enterprise Security** - Google-grade security and compliance
+- ✅ **Built-in Monitoring** - Logging, metrics, and alerts
 
 ### **Option 2: Local Development**
 ```bash
@@ -29,7 +29,7 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
-pip install -r requirements-streamlit.txt
+pip install -r requirements-gcp.txt
 
 # Run the dashboard
 streamlit run streamlit_app.py
@@ -74,12 +74,14 @@ This project follows a **split architecture** approach for optimal deployment:
 
 ## 🚀 **Deployment Options**
 
-### **1. Streamlit Cloud (Primary)**
-- **File**: `streamlit_app.py`
-- **Requirements**: `requirements-streamlit.txt`
-- **Guide**: [docs/STREAMLIT_DEPLOY.md](docs/STREAMLIT_DEPLOY.md)
+### **1. Google Cloud Platform (Primary)**
+- **API**: Cloud Run with FastAPI
+- **UI**: App Engine with Streamlit
+- **Requirements**: `requirements-gcp.txt`
+- **Guide**: [docs/GCP_DEPLOY.md](docs/GCP_DEPLOY.md)
+- **Script**: `deploy-gcp.sh` (automated deployment)
 
-### **2. Docker Compose (Local)**
+### **2. Docker Compose (Local Development)**
 ```bash
 # Start all services
 docker-compose up -d
@@ -90,17 +92,27 @@ docker-compose up -d
 # MLflow: http://localhost:5000
 ```
 
-### **3. Cloud Deployment (Advanced)**
-- **API**: Google Cloud Run / Railway
-- **UI**: Streamlit Cloud / Hugging Face Spaces
-- **Tracking**: DAGsHub MLflow / Weights & Biases
+### **3. Local Development**
+```bash
+# Install dependencies
+pip install -r requirements-gcp.txt
+
+# Run API
+python src/api/app.py
+
+# Run UI
+streamlit run streamlit_app.py
+```
 
 ## 📁 **Project Structure**
 
 ```
 stock-prediction-mlops/
 ├── streamlit_app.py          # 🎯 Standalone Streamlit app
-├── requirements-streamlit.txt # 📦 Streamlit dependencies
+├── requirements-gcp.txt      # 📦 GCP deployment dependencies
+├── Dockerfile.gcp            # 🐳 GCP Cloud Run container
+├── app.yaml                  # ⚙️ GCP App Engine config
+├── deploy-gcp.sh            # 🚀 Automated GCP deployment script
 ├── src/
 │   ├── api/                 # 🔧 FastAPI service
 │   ├── frontend/            # 🎨 Streamlit UI
@@ -108,8 +120,8 @@ stock-prediction-mlops/
 │   └── monitoring/          # 📊 Model monitoring
 ├── configs/                 # ⚙️ Configuration files
 ├── docs/                    # 📚 Documentation
-│   ├── STREAMLIT_DEPLOY.md # 🚀 Streamlit deployment guide
-│   ├── DEPLOY.md           # ☁️ Cloud deployment guide
+│   ├── GCP_DEPLOY.md       # 🚀 GCP deployment guide
+│   ├── DEPLOY.md           # ☁️ General deployment guide
 │   └── ARCHITECTURE.md     # 🏗️ Architecture overview
 └── docker-compose.yml      # 🐳 Local development
 ```
@@ -150,9 +162,9 @@ Current metrics (on sample data):
 ## 🚀 **Getting Started**
 
 ### **For Resume/Portfolio (Recommended)**
-1. **Deploy to Streamlit Cloud** in 5 minutes
-2. **Get live demo URL** immediately
-3. **Share on resume** and LinkedIn
+1. **Deploy to Google Cloud Platform** in 15 minutes
+2. **Get professional live URLs** immediately
+3. **Share enterprise-grade demo** on resume and LinkedIn
 
 ### **For Learning/Development**
 1. **Clone repository**
@@ -161,13 +173,14 @@ Current metrics (on sample data):
 
 ### **For Production**
 1. **Set up external MLflow** (DAGsHub)
-2. **Deploy API** to Cloud Run/Railway
-3. **Connect real data sources**
+2. **Deploy API** to GCP Cloud Run
+3. **Deploy UI** to GCP App Engine
+4. **Connect real data sources**
 
 ## 📚 **Documentation**
 
-- **[🚀 Streamlit Deployment](docs/STREAMLIT_DEPLOY.md)**: Get live demo in 5 minutes
-- **[☁️ Cloud Deployment](docs/DEPLOY.md)**: Full cloud architecture setup
+- **[🚀 GCP Deployment](docs/GCP_DEPLOY.md)**: Deploy to Google Cloud in 15 minutes
+- **[☁️ General Deployment](docs/DEPLOY.md)**: Deployment architecture overview
 - **[🏗️ Architecture](docs/ARCHITECTURE.md)**: System design and data flow
 - **[📋 Resume Guide](docs/RESUME.md)**: How to showcase this project
 
@@ -194,13 +207,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🎯 **Ready to Deploy?**
 
-**Get your live demo URL in 5 minutes:**
+**Get your professional live demo URLs in 15 minutes:**
 
-1. **Push code to GitHub**
-2. **Deploy to Streamlit Cloud**
-3. **Share on your resume!**
+1. **Set up GCP account** (free, no credit card)
+2. **Deploy to Google Cloud Platform**
+3. **Share enterprise-grade URLs on your resume!**
 
-**Need help?** Check out the [Streamlit Deployment Guide](docs/STREAMLIT_DEPLOY.md) 🚀
+**Need help?** Check out the [GCP Deployment Guide](docs/GCP_DEPLOY.md) 🚀
 
 ---
 

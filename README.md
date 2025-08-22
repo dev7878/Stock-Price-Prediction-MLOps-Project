@@ -2,6 +2,7 @@
 
 <!-- Test deployment trigger - Cloud Build integration active -->
 <!-- App Engine now enabled - deployment should work! -->
+<!-- .dockerignore fixed - Docker build should work now! -->
 
 ## 🚀 Quick Start
 

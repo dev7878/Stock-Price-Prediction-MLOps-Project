@@ -265,10 +265,15 @@ def verify_api_key(x_api_key: Optional[str] = Header(None)):
 
 # Initialize predictor (with error handling)
 try:
+    print("Initializing StockPredictor...")
     predictor = StockPredictor(config)
+    print("StockPredictor initialized successfully")
 except Exception as e:
     print(f"Warning: Failed to initialize predictor: {e}")
     predictor = None
+
+print("FastAPI app initialization complete")
+print(f"Available endpoints: /, /health, /version, /symbols, /predict/{{symbol}}, /plot/{{symbol}}, /metrics/{{symbol}}")
 
 @app.get("/")
 async def root():
@@ -408,4 +413,15 @@ async def get_metrics(symbol: str):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host=config["api"]["host"], port=config["api"]["port"]) 
+    import os
+    
+    # Use environment variable PORT if available (for Render), otherwise config
+    port = int(os.getenv("PORT", config["api"]["port"]))
+    host = os.getenv("HOST", config["api"]["host"])
+    
+    print(f"Starting API server on {host}:{port}")
+    try:
+        uvicorn.run(app, host=host, port=port, log_level="info")
+    except Exception as e:
+        print(f"Failed to start server: {e}")
+        raise 

@@ -2,13 +2,13 @@
 # This file automatically builds and deploys the API to Cloud Run
 
 steps:
-  # Step 1: Build the Docker image (using super minimal Dockerfile)
+  # Step 1: Build the Docker image (using working Dockerfile)
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "build",
         "-f",
-        "Dockerfile.gcp.superminimal",
+        "Dockerfile.gcp.working",
         "-t",
         "gcr.io/$PROJECT_ID/stock-prediction-api:$COMMIT_SHA",
         "-t",

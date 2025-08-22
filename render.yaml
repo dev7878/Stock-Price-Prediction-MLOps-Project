@@ -1,5 +1,5 @@
 services:
-  # Stock Prediction API Service
+  # Stock Prediction API Service (Updated)
   - type: web
     name: stock-prediction-api
     env: python

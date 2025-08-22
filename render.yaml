@@ -9,7 +9,7 @@ services:
       pip install numpy pandas scikit-learn tensorflow xgboost lightgbm
       pip install fastapi uvicorn gunicorn pydantic
       pip install requests pyyaml plotly mlflow
-    startCommand: gunicorn src.api.app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
+    startCommand: uvicorn src.api.app:app --host 0.0.0.0 --port $PORT --workers 1
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0

@@ -32,5 +32,5 @@ ENV PYTHONPATH=/app
 # Expose port
 EXPOSE 8080
 
-# Simple command
-CMD ["uvicorn", "src.api.app:app", "--host", "0.0.0.0", "--port", "8080"]
+# Use shell form to properly expand environment variables
+CMD uvicorn src.api.app:app --host 0.0.0.0 --port $PORT

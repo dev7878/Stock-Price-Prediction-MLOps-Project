@@ -85,9 +85,8 @@ models/*/
 *.log
 logs/
 
-# Documentation
+# Documentation (but keep README for build context)
 docs/
-*.md
 LICENSE
 CONTRIBUTING.md
 
@@ -96,3 +95,9 @@ CONTRIBUTING.md
 
 # GitHub
 .github/
+
+# Keep these files for Docker build
+!requirements*.txt
+!Dockerfile*
+!app.yaml
+!streamlit_app.py

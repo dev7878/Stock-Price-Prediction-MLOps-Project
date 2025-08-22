@@ -1,8 +1,8 @@
-# 📈 Stock Price Prediction MLOps Project
+# Stock Price Prediction MLOps Project
 
-A comprehensive MLOps project demonstrating end-to-end machine learning operations for stock price prediction using **LSTM**, **XGBoost**, and **LightGBM** models.
+<!-- Test deployment trigger - Cloud Build integration active -->
 
-## 🚀 **Quick Start - Live Demo**
+## 🚀 Quick Start
 
 ### **Option 1: Google Cloud Platform (Recommended)**
 🎯 **Get a professional live demo URL in 15 minutes!**

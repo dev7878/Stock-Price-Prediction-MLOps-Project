@@ -91,9 +91,14 @@ class StockPredictor:
         self.processed_data_path = Path(config["data"]["processed_data_path"])
         self.models_path = Path(config["model"]["model_path"])
         
-        # Set up MLflow
-        mlflow.set_tracking_uri(config["mlflow"]["tracking_uri"])
-        mlflow.set_experiment(f"{config['mlflow']['experiment_name']}_api")
+        # Set up MLflow (optional - don't fail if unavailable)
+        try:
+            mlflow.set_tracking_uri(config["mlflow"]["tracking_uri"])
+            mlflow.set_experiment(f"{config['mlflow']['experiment_name']}_api")
+        except Exception as e:
+            print(f"Warning: MLflow setup failed, continuing without tracking: {e}")
+            # Set a dummy tracking URI to prevent errors
+            mlflow.set_tracking_uri("sqlite:///mlflow.db")
 
     def load_models(self, symbol: str):
         """Load all models for a given symbol."""
@@ -258,8 +263,12 @@ def verify_api_key(x_api_key: Optional[str] = Header(None)):
         )
     return x_api_key
 
-# Initialize predictor
-predictor = StockPredictor(config)
+# Initialize predictor (with error handling)
+try:
+    predictor = StockPredictor(config)
+except Exception as e:
+    print(f"Warning: Failed to initialize predictor: {e}")
+    predictor = None
 
 @app.get("/")
 async def root():
@@ -295,19 +304,28 @@ async def predict(symbol: str, request: PredictionRequest):
     if symbol not in config["data"]["symbols"]:
         raise HTTPException(status_code=404, detail=f"Symbol {symbol} not found")
     
-    predictions, metrics = predictor.make_predictions(symbol, request.days)
+    if predictor is None:
+        raise HTTPException(status_code=503, detail="Prediction service temporarily unavailable")
     
-    return {
-        "symbol": symbol,
-        "predictions": predictions,
-        "metrics": metrics
-    }
+    try:
+        predictions, metrics = predictor.make_predictions(symbol, request.days)
+        
+        return {
+            "symbol": symbol,
+            "predictions": predictions,
+            "metrics": metrics
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
 
 @app.get("/plot/{symbol}")
 async def get_plot(symbol: str, days: int = 30):
     """Get interactive plot for a symbol."""
     if symbol not in config["data"]["symbols"]:
         raise HTTPException(status_code=404, detail=f"Symbol {symbol} not found")
+    
+    if predictor is None:
+        raise HTTPException(status_code=503, detail="Prediction service temporarily unavailable")
     
     try:
         X, y, dates, features = predictor.prepare_data(symbol)
@@ -379,8 +397,14 @@ async def get_metrics(symbol: str):
     if symbol not in config["data"]["symbols"]:
         raise HTTPException(status_code=404, detail=f"Symbol {symbol} not found")
     
-    _, metrics = predictor.make_predictions(symbol)
-    return metrics
+    if predictor is None:
+        raise HTTPException(status_code=503, detail="Prediction service temporarily unavailable")
+    
+    try:
+        _, metrics = predictor.make_predictions(symbol)
+        return metrics
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get metrics: {str(e)}")
 
 if __name__ == "__main__":
     import uvicorn

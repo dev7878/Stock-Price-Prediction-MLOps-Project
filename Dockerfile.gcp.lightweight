@@ -1,0 +1,32 @@
+# Lightweight GCP Cloud Run Dockerfile - No heavy ML dependencies
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install minimal system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install only essential Python dependencies (no heavy ML)
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+RUN pip install --no-cache-dir \
+    fastapi==0.104.1 \
+    uvicorn==0.24.0 \
+    requests==2.31.0 \
+    pydantic==2.5.0
+
+# Copy the lightweight API
+COPY src/api/app_lightweight.py ./main.py
+
+# Set environment variables for GCP
+ENV PORT=8080
+ENV HOST=0.0.0.0
+ENV PYTHONPATH=/app
+
+# Expose port
+EXPOSE 8080
+
+# Run the lightweight API
+CMD uvicorn main:app --host 0.0.0.0 --port $PORT
